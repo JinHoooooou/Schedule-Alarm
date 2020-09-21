@@ -6,12 +6,15 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class Crawling {
 
   private static WebDriver webDriver;
-  private static String NAVER_URL = "https://www.naver.com";
+
+  public String getWebPageTitle(String url) {
+    connectChromeDriver();
+    webDriver.get(url);
+    return webDriver.getTitle();
+  }
 
   public static void main(String[] args) {
     connectChromeDriver();
-    webDriver.get(NAVER_URL);
-    System.out.println(webDriver.getTitle());
   }
 
   private static void connectChromeDriver() {
