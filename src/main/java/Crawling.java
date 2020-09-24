@@ -10,6 +10,21 @@ public class Crawling {
   public String crawlKboSchedule(String url) throws IOException {
     Document htmlDocument = Jsoup.connect(url).get();
 
+    List<Baseball> matchList = getTodayMatch(htmlDocument);
+    return buildScheduleString(matchList);
+  }
+
+  private String buildScheduleString(List<Baseball> matchList) {
+    String result = "";
+    for (Baseball match : matchList) {
+      result += String.format("%s, %s(%s) vs %s(%s), %s\n",
+          match.getTime(), match.getAwayTeamName(), match.getAwayTeamPitcher(),
+          match.getHomeTeamName(), match.getHomeTeamPitcher(), match.getPlace());
+    }
+    return result;
+  }
+
+  private List<Baseball> getTodayMatch(Document htmlDocument) {
     List<Baseball> matchList = new ArrayList<>();
     Element matchTable = htmlDocument.selectFirst("tbody._scroll_content");
     for (Element element : matchTable.getElementsByTag("tr")) {
@@ -26,14 +41,6 @@ public class Crawling {
           .add(new Baseball(time, awayTeamName, awayTeamPitcher, homeTeamName, homeTeamPitcher,
               place));
     }
-
-    String result = "";
-    for (Baseball match : matchList) {
-      result += String.format("%s, %s(%s) vs %s(%s), %s\n",
-          match.getTime(), match.getAwayTeamName(), match.getAwayTeamPitcher(),
-          match.getHomeTeamName(), match.getHomeTeamPitcher(), match.getPlace());
-    }
-
-    return result;
+    return matchList;
   }
 }
