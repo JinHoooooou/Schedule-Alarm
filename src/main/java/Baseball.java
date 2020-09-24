@@ -5,7 +5,6 @@ public class Baseball {
   private String homeTeamName;
   private String awayTeamPitcher;
   private String homeTeamPitcher;
-  private String result;
   private String place;
 
   public Baseball(String time, String awayTeamName, String awayTeamPitcher, String homeTeamName,
@@ -56,14 +55,6 @@ public class Baseball {
 
   public void setHomeTeamPitcher(String homeTeamPitcher) {
     this.homeTeamPitcher = homeTeamPitcher;
-  }
-
-  public String getResult() {
-    return result;
-  }
-
-  public void setResult(String result) {
-    this.result = result;
   }
 
   public String getPlace() {
