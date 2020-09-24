@@ -7,6 +7,8 @@ import org.jsoup.nodes.Element;
 
 public class Crawling {
 
+  private static final String NOT_MATCH = "오늘 경기 일정은 없습니다.";
+
   public String crawlKboSchedule(String url) throws IOException {
     Document htmlDocument = Jsoup.connect(url).get();
 
@@ -16,7 +18,7 @@ public class Crawling {
 
   private String buildScheduleString(List<Baseball> matchList) {
     if (matchList.isEmpty()) {
-      return "오늘 경기 일정은 없습니다.";
+      return NOT_MATCH;
     }
     String result = "";
     for (Baseball match : matchList) {
