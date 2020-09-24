@@ -15,6 +15,9 @@ public class Crawling {
   }
 
   private String buildScheduleString(List<Baseball> matchList) {
+    if (matchList.isEmpty()) {
+      return "오늘 경기 일정은 없습니다.";
+    }
     String result = "";
     for (Baseball match : matchList) {
       result += String.format("%s, %s(%s) vs %s(%s), %s\n",
@@ -27,6 +30,9 @@ public class Crawling {
   private List<Baseball> getTodayMatch(Document htmlDocument) {
     List<Baseball> matchList = new ArrayList<>();
     Element matchTable = htmlDocument.selectFirst("tbody._scroll_content");
+    if (matchTable == null) {
+      return new ArrayList<>();
+    }
     for (Element element : matchTable.getElementsByTag("tr")) {
       String time = element.select("span.bg_none").text();
       String place = element.select("td.place").text();
