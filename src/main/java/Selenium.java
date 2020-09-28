@@ -39,7 +39,7 @@ public class Selenium {
     inputNaverId(System.getenv("NAVER_ID"));
     inputNaverPassword(System.getenv("NAVER_PASSWORD"));
     webDriver.findElement(By.id("log.login")).submit();
-    Thread.sleep(1000);
+    Thread.sleep(3000);
     System.out.println(webDriver.getTitle());
   }
 
@@ -50,7 +50,7 @@ public class Selenium {
     pw.click();
     pw.sendKeys(Keys.CONTROL + "v");
 
-    Thread.sleep(1000);
+    Thread.sleep(5000);
   }
 
   public void inputNaverId(String naverId) throws InterruptedException {
@@ -60,7 +60,7 @@ public class Selenium {
     id.click();
     id.sendKeys(Keys.CONTROL + "v");
 
-    Thread.sleep(1000);
+    Thread.sleep(5000);
   }
 
   public void copyToClipBoard(String contents) {
