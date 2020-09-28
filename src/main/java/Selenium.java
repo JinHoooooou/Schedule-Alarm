@@ -28,6 +28,10 @@ public class Selenium {
     webDriver = new ChromeDriver(options);
   }
 
+  public void disconnect() {
+    webDriver.close();
+  }
+
   public void login(String url) throws InterruptedException {
     webDriver.get(url);
     Thread.sleep(1000);
