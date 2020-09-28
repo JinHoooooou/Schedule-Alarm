@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
@@ -25,6 +26,7 @@ public class Selenium {
     WebDriverManager.chromedriver().setup();
     ChromeOptions options = new ChromeOptions();
     options.addArguments("--headless");
+    System.setProperty("java.awt.headless", "true");
     webDriver = new ChromeDriver(options);
   }
 
@@ -64,7 +66,8 @@ public class Selenium {
   }
 
   public void copyToClipBoard(String contents) {
-    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+    Clipboard clipboard = new Clipboard("HeadlessClipboard");
+    clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
     clipboard.setContents(new StringSelection(contents), null);
   }
 }
