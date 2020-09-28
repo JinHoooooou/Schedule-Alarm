@@ -1,3 +1,4 @@
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,6 +16,11 @@ public class SeleniumTest {
   @Test
   public void seleniumLoginTest() throws InterruptedException {
     selenium.login(NAVER_LOGIN_URL);
+  }
+
+  @After
+  public void tearDown() {
+    selenium.disconnect();
   }
 
 }
