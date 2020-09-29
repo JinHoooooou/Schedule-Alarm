@@ -1,19 +1,26 @@
-import static org.junit.Assert.*;
-
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class SeleniumTest {
 
-  @Test
-  public void testWhenUrlIsMelon() {
-    // Given: Set melon url
-    String url = "https://www.melon.com/index.htm";
+  private static final String EVERYTIME_LOGIN_URL = "https://everytime.kr/login";
 
-    // When: Call getWebPageTitle method
-    String actual = new Selenium().getWebPageTitle(url);
+  private Selenium selenium;
 
-    // Then: Should return "Melon::음악이 필요한 순간, 멜론"
-    String expected = "Melon::음악이 필요한 순간, 멜론";
-    assertEquals(expected, actual);
+  @Before
+  public void setUp() {
+    selenium = new Selenium();
   }
+
+  @Test
+  public void seleniumLoginTest() throws InterruptedException {
+    selenium.login(EVERYTIME_LOGIN_URL);
+  }
+
+  @After
+  public void tearDown() {
+    selenium.disconnect();
+  }
+
 }

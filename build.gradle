@@ -2,6 +2,13 @@ plugins {
     id 'java'
     id 'application'
 }
+
+test {
+    testLogging {
+        outputs.upToDateWhen {false}
+        showStandardStreams = true
+    }
+}
 mainClassName = 'Selenium'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
