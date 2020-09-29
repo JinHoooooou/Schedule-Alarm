@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class Selenium {
 
   private static WebDriver webDriver;
+  private static WebElement action;
 
   public Selenium() {
     connectChromeDriver();
@@ -21,7 +22,6 @@ public class Selenium {
     WebDriverManager.chromedriver().setup();
     ChromeOptions options = new ChromeOptions();
     options.addArguments("--headless");
-    System.setProperty("java.awt.headless", "true");
     webDriver = new ChromeDriver(options);
   }
 
@@ -32,13 +32,18 @@ public class Selenium {
   public void login(String url) throws InterruptedException {
     webDriver.get(url);
     Thread.sleep(1000);
+
     System.out.println(webDriver.getTitle());
     inputId(System.getenv("EVERY_TIME_ID"));
     inputPassword(System.getenv("EVERY_TIME_PASSWORD"));
     webDriver.findElement(By.className("submit")).submit();
 
     Thread.sleep(3000);
-    System.out.println(webDriver.getTitle());
+    if (webDriver.getPageSource().contains("광운대")) {
+      System.out.println("로그인 성공");
+    } else {
+      System.out.println("로그인 실패");
+    }
   }
 
   public void inputPassword(String password) throws InterruptedException {
