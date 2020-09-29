@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class SeleniumTest {
 
-  private static final String NAVER_LOGIN_URL = "https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com";
+  private static final String EVERYTIME_LOGIN_URL = "https://everytime.kr/login";
 
   private Selenium selenium;
 
@@ -15,7 +15,7 @@ public class SeleniumTest {
 
   @Test
   public void seleniumLoginTest() throws InterruptedException {
-    selenium.login(NAVER_LOGIN_URL);
+    selenium.login(EVERYTIME_LOGIN_URL);
   }
 
   @After
