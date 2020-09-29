@@ -1,10 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import java.awt.GraphicsEnvironment;
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -38,36 +33,25 @@ public class Selenium {
     webDriver.get(url);
     Thread.sleep(1000);
     System.out.println(webDriver.getTitle());
-    inputNaverId(System.getenv("NAVER_ID"));
-    inputNaverPassword(System.getenv("NAVER_PASSWORD"));
-    webDriver.findElement(By.id("log.login")).submit();
+    inputId(System.getenv("EVERY_TIME_ID"));
+    inputPassword(System.getenv("EVERY_TIME_PASSWORD"));
+    webDriver.findElement(By.className("submit")).submit();
+
     Thread.sleep(3000);
     System.out.println(webDriver.getTitle());
   }
 
-  public void inputNaverPassword(String naverPassword) throws InterruptedException {
-    copyToClipBoard(naverPassword);
+  public void inputPassword(String password) throws InterruptedException {
+    action = webDriver.findElement(By.name("password"));
+    action.sendKeys(password);
 
-    WebElement pw = webDriver.findElement(By.id("pw"));
-    pw.click();
-    pw.sendKeys(Keys.CONTROL + "v");
-
-    Thread.sleep(5000);
+    Thread.sleep(1000);
   }
 
-  public void inputNaverId(String naverId) throws InterruptedException {
-    copyToClipBoard(naverId);
+  public void inputId(String id) throws InterruptedException {
+    action = webDriver.findElement(By.name("userid"));
+    action.sendKeys(id);
 
-    WebElement id = webDriver.findElement(By.id("id"));
-    id.click();
-    id.sendKeys(Keys.CONTROL + "v");
-
-    Thread.sleep(5000);
-  }
-
-  public void copyToClipBoard(String contents) {
-    Clipboard clipboard = new Clipboard("HeadlessClipboard");
-    clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-    clipboard.setContents(new StringSelection(contents), null);
+    Thread.sleep(1000);
   }
 }
