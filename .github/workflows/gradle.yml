@@ -14,8 +14,8 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      NAVER_ID: ${{secrets.NAVER_ID}}
-      NAVER_PASSWORD: ${{secrets.NAVER_PASSWORD}}
+      NAVER_ID: ${{secrets.EVERYTIME_ID}}
+      NAVER_PASSWORD: ${{secrets.EVERYTIME_PW}}
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 1.8
