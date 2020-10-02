@@ -38,7 +38,7 @@ public class Selenium {
   private static void connectChromeDriver() {
     WebDriverManager.chromedriver().setup();
     ChromeOptions options = new ChromeOptions();
-    options.addArguments("--headless");
+    //options.addArguments("--headless");
     webDriver = new ChromeDriver(options);
   }
 
@@ -69,7 +69,7 @@ public class Selenium {
     } else if (contents.equals(EVERY_TIME_PASSWORD)) {
       action = webDriver.findElement(By.name("password"));
     } else {
-      webDriver.findElement(By.name("text"));
+      action = webDriver.findElement(By.name("text"));
     }
     action.sendKeys(contents);
 
