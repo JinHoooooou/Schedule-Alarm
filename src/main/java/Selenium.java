@@ -18,6 +18,28 @@ public class Selenium {
     connectChromeDriver();
   }
 
+  public void post(String contents) throws InterruptedException {
+
+    click(By.xpath("/html/body/div[2]/div[2]/a"));
+    inputContents(contents);
+    click(By.className("anonym"));
+    action.submit();
+    Thread.sleep(1000);
+  }
+
+  private void inputContents(String contents) throws InterruptedException {
+    action = webDriver.findElement(By.name("text"));
+    action.sendKeys(contents);
+
+    Thread.sleep(1000);
+  }
+
+
+  private void click(By xpath) {
+    action = webDriver.findElement(xpath);
+    action.click();
+  }
+
   private static void connectChromeDriver() {
     WebDriverManager.chromedriver().setup();
     ChromeOptions options = new ChromeOptions();
