@@ -7,8 +7,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Selenium {
 
-  private static final String EVERY_TIME_ID = System.getenv("EVERY_TIME_ID");
-  private static final String EVERY_TIME_PASSWORD = System.getenv("EVERY_TIME_PASSWORD");
+  public static final String EVERY_TIME_ID = System.getenv("EVERY_TIME_ID");
+  public static final String EVERY_TIME_PASSWORD = System.getenv("EVERY_TIME_PASSWORD");
 
   private static WebDriver webDriver;
   private static WebElement action;
@@ -64,13 +64,8 @@ public class Selenium {
   }
 
   private void inputContents(String contents) throws InterruptedException {
-    if (contents.equals(EVERY_TIME_ID)) {
-      action = webDriver.findElement(By.name("userid"));
-    } else if (contents.equals(EVERY_TIME_PASSWORD)) {
-      action = webDriver.findElement(By.name("password"));
-    } else {
-      action = webDriver.findElement(By.name("text"));
-    }
+    String cssName = CssName.getCssName(contents);
+    action = webDriver.findElement(By.name(cssName));
     action.sendKeys(contents);
 
     Thread.sleep(1000);
