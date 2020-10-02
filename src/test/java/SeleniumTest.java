@@ -23,7 +23,7 @@ public class SeleniumTest {
   @Test
   public void seleniumPostToSecretBoardTest() throws InterruptedException {
     selenium.login(EVERYTIME_SECRET_BOARD_URL);
-    selenium.post("추석 잘보내");
+    selenium.post("내일 올라가느느냐, 주말 끝나고 올라가느느냐");
   }
 
   @After
