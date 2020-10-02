@@ -19,6 +19,11 @@ public class SeleniumTest {
   public void seleniumLoginTest() throws InterruptedException {
     selenium.login(EVERYTIME_SECRET_BOARD_URL);
   }
+
+  @Test
+  public void seleniumPostToSecretBoardTest() throws InterruptedException {
+    selenium.login(EVERYTIME_SECRET_BOARD_URL);
+    selenium.post("추석 잘보내");
   }
 
   @After
