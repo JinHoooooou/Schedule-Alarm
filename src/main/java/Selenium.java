@@ -7,6 +7,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Selenium {
 
+  private static final String EVERY_TIME_ID = System.getenv("EVERY_TIME_ID");
+  private static final String EVERY_TIME_PASSWORD = System.getenv("EVERY_TIME_PASSWORD");
+
   private static WebDriver webDriver;
   private static WebElement action;
 
@@ -56,8 +59,8 @@ public class Selenium {
     Thread.sleep(1000);
 
     System.out.println(webDriver.getTitle());
-    inputId(System.getenv("EVERY_TIME_ID"));
-    inputPassword(System.getenv("EVERY_TIME_PASSWORD"));
+    inputContents(EVERY_TIME_ID);
+    inputContents(EVERY_TIME_PASSWORD);
     webDriver.findElement(By.className("submit")).submit();
 
     Thread.sleep(3000);
