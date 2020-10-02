@@ -38,7 +38,7 @@ public class Selenium {
   private static void connectChromeDriver() {
     WebDriverManager.chromedriver().setup();
     ChromeOptions options = new ChromeOptions();
-    //options.addArguments("--headless");
+    options.addArguments("--headless");
     webDriver = new ChromeDriver(options);
   }
 
