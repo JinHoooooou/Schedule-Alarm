@@ -30,14 +30,6 @@ public class Selenium {
     Thread.sleep(1000);
   }
 
-  private void inputContents(String contents) throws InterruptedException {
-    action = webDriver.findElement(By.name("text"));
-    action.sendKeys(contents);
-
-    Thread.sleep(1000);
-  }
-
-
   private void click(By xpath) {
     action = webDriver.findElement(xpath);
     action.click();
@@ -71,16 +63,15 @@ public class Selenium {
     }
   }
 
-  public void inputPassword(String password) throws InterruptedException {
-    action = webDriver.findElement(By.name("password"));
-    action.sendKeys(password);
-
-    Thread.sleep(1000);
-  }
-
-  public void inputId(String id) throws InterruptedException {
-    action = webDriver.findElement(By.name("userid"));
-    action.sendKeys(id);
+  private void inputContents(String contents) throws InterruptedException {
+    if (contents.equals(EVERY_TIME_ID)) {
+      action = webDriver.findElement(By.name("userid"));
+    } else if (contents.equals(EVERY_TIME_PASSWORD)) {
+      action = webDriver.findElement(By.name("password"));
+    } else {
+      webDriver.findElement(By.name("text"));
+    }
+    action.sendKeys(contents);
 
     Thread.sleep(1000);
   }
