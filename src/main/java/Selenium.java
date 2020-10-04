@@ -15,10 +15,6 @@ public class Selenium {
     connectChromeDriver();
   }
 
-  public static void main(String[] args) {
-    connectChromeDriver();
-  }
-
   public void post(String contents) throws InterruptedException {
 
     click(By.xpath("/html/body/div[2]/div[2]/a"));
