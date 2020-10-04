@@ -7,6 +7,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Selenium {
 
+  public static final String EVERY_TIME_ID = System.getenv("EVERY_TIME_ID");
+  public static final String EVERY_TIME_PASSWORD = System.getenv("EVERY_TIME_PASSWORD");
+
   private static WebDriver webDriver;
   private static WebElement action;
 
@@ -16,6 +19,20 @@ public class Selenium {
 
   public static void main(String[] args) {
     connectChromeDriver();
+  }
+
+  public void post(String contents) throws InterruptedException {
+
+    click(By.xpath("/html/body/div[2]/div[2]/a"));
+    inputContents(contents);
+    click(By.className("anonym"));
+    action.submit();
+    Thread.sleep(1000);
+  }
+
+  private void click(By xpath) {
+    action = webDriver.findElement(xpath);
+    action.click();
   }
 
   private static void connectChromeDriver() {
@@ -34,8 +51,8 @@ public class Selenium {
     Thread.sleep(1000);
 
     System.out.println(webDriver.getTitle());
-    inputId(System.getenv("EVERY_TIME_ID"));
-    inputPassword(System.getenv("EVERY_TIME_PASSWORD"));
+    inputContents(EVERY_TIME_ID);
+    inputContents(EVERY_TIME_PASSWORD);
     webDriver.findElement(By.className("submit")).submit();
 
     Thread.sleep(3000);
@@ -46,16 +63,10 @@ public class Selenium {
     }
   }
 
-  public void inputPassword(String password) throws InterruptedException {
-    action = webDriver.findElement(By.name("password"));
-    action.sendKeys(password);
-
-    Thread.sleep(1000);
-  }
-
-  public void inputId(String id) throws InterruptedException {
-    action = webDriver.findElement(By.name("userid"));
-    action.sendKeys(id);
+  private void inputContents(String contents) throws InterruptedException {
+    String cssName = CssName.getCssName(contents);
+    action = webDriver.findElement(By.name(cssName));
+    action.sendKeys(contents);
 
     Thread.sleep(1000);
   }
