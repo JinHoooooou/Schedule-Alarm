@@ -5,7 +5,7 @@ name: Java CI with Gradle
 
 on:
   schedule:
-    - cron: "0 3 * 10 *" #10월 한달동안 12시에
+    - cron: "30 3 * 10 *" #10월 한달동안 12시 30분에
 jobs:
   build:
 
