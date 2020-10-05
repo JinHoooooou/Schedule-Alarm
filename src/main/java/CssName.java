@@ -1,11 +1,13 @@
+import Constants.Constants;
+
 public abstract class CssName {
 
   public abstract String getName();
 
   public static String getCssName(String contents) {
-    if (contents.equals(Selenium.EVERY_TIME_ID)) {
+    if (contents.equals(Constants.EVERYTIME_ID)) {
       return new Id().getName();
-    } else if (contents.equals(Selenium.EVERY_TIME_PASSWORD)) {
+    } else if (contents.equals(Constants.EVERYTIME_PW)) {
       return new Password().getName();
     }
     return new Text().getName();

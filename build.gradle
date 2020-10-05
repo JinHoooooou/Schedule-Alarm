@@ -9,7 +9,7 @@ test {
         showStandardStreams = true
     }
 }
-mainClassName = 'Selenium'
+mainClassName = 'AutoPostingApplication'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 group 'org.example'
@@ -26,4 +26,6 @@ dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.8.1'
     compile group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
 }

@@ -1,3 +1,4 @@
+import Constants.Constants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,17 +8,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Selenium {
 
-  public static final String EVERY_TIME_ID = System.getenv("EVERY_TIME_ID");
-  public static final String EVERY_TIME_PASSWORD = System.getenv("EVERY_TIME_PASSWORD");
-
   private static WebDriver webDriver;
   private static WebElement action;
 
   public Selenium() {
-    connectChromeDriver();
-  }
-
-  public static void main(String[] args) {
     connectChromeDriver();
   }
 
@@ -51,8 +45,8 @@ public class Selenium {
     Thread.sleep(1000);
 
     System.out.println(webDriver.getTitle());
-    inputContents(EVERY_TIME_ID);
-    inputContents(EVERY_TIME_PASSWORD);
+    inputContents(Constants.EVERYTIME_ID);
+    inputContents(Constants.EVERYTIME_PW);
     webDriver.findElement(By.className("submit")).submit();
 
     Thread.sleep(3000);

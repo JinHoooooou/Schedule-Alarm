@@ -4,11 +4,8 @@
 name: Java CI with Gradle
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+  schedule:
+    - cron: "0 3 * 10 *" #10월 한달동안 12시에
 jobs:
   build:
 
@@ -30,4 +27,4 @@ jobs:
         run: chmod +x gradlew
       - run: export DISPLAY=:0.0
       - name: Build with Gradle
-        run: ./gradlew clean test --info --tests *SeleniumTest
+        run: ./gradlew run
