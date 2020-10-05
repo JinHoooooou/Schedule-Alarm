@@ -12,7 +12,7 @@ public interface Constants {
 
   String EVERYTIME_SECRET_BOARD_URL = "https://everytime.kr/255668";
   String KBO_SCHEDULE_URL = "https://search.naver.com/search.naver?ie=UTF-8&query=kbo%EC%9D%BC%EC%A0%95&sm=chr_hty";
-  String LOL_WORLDS_SCHEDULE_URL = "https://search.naver.com/search.naver?ie=UTF-8&query=lol+%EC%9B%94%EB%93%9C+%EC%B1%94%ED%94%BC%EC%96%B8%EC%8B%AD&sm=chr_hty";
+  String LOL_WORLDS_SCHEDULE_URL = "https://search.naver.com/search.naver?ie=UTF-8&query=%EB%A1%A4%EB%93%9C%EC%BB%B5+%EC%9D%BC%EC%A0%95&sm=chr_hty";
 
   String DATE_FORMAT = new SimpleDateFormat("yyyy년 MM월 dd일").format(new Date());
   String[] WEEK_DAY = {"일", "월", "화", "수", "목", "금", "토"};
